@@ -1,5 +1,10 @@
-import ReactDOM from 'react-dom';
+// Boa prática do React é manter o prejeto bem organizado. Procurar sempre ter somente um componente por arquivo.
 
+import ReactDOM from 'react-dom';
+import App from "./App";
+import './styles/global.css';
+
+/*
 // Pascal Case: a segunda palavra do componente é em caixa alta.
 function App() {
     return <SubTitle />
@@ -12,6 +17,7 @@ function App() {
 function SubTitle() {
     return <h2>Componente Subtítulo!</h2>
 }; // Componentes são funções JavaScript que precisam começar com a primeira letra maiúscula e retornar o código JSX que são os elementos que serão exibidos na tela quando o componente for usado.
+*/
 
 ReactDOM.render(
     <App />,
