@@ -1,5 +1,7 @@
 //import React from 'react'; {<React.Fragment></React.Fragment> ou <> </>}
 
+import { useState } from 'react'; // useState são chamadas react hooks.
+
 import './styles/App.css';
 import './styles/PostForm.css';
 import './styles/Feed.css';
@@ -12,6 +14,8 @@ import emptyFolderIcon from './images/empty-folder.svg';
 
 // Pascal Case: a segunda palavra do componente é em caixa alta.
 export default function App() {
+    const [history, setHistory] = useState('');
+    const [userName, setUserName] = useState('')
     // const posts = [
     //     {
     //         id: Math.random(),
@@ -21,17 +25,41 @@ export default function App() {
     //     },
     // ];
 
-    const posts = [];
+    const [posts, setPosts] = useState([]);
+
+    function handleSubmit(event) {
+        event.preventDefault(); // Previne atualização da página no redirect.
+        setPosts([
+            ...posts, // Uso do ...(spreed) para manter o post anterior
+            {
+                id: Math.random(),
+                content: history,
+                userName, // Como é o mesmo nome pode deixar sem o segundo (userName: userName,)
+                publishedAt: new Date(),
+            },
+        ]);
+
+        setHistory('');
+        setUserName('');
+    };
 
     return (
         <div className='wrapper'>
-            <form className='post-form' onSubmit={() => alert('Formulário Submetido!')}>
-                <input placeholder='Escreva uma nova história...' />
+            <form className='post-form' onSubmit={handleSubmit}>
+                <input
+                    value={history}
+                    placeholder='Escreva uma nova história...'
+                    onChange={(event) => setHistory(event.target.value)}
+                />
 
                 <div>
                     <img src={userIcon} alt="User" />
 
-                    <input placeholder='Digite seu nome...' />
+                    <input
+                        value={userName}
+                        placeholder='Digite seu nome...'
+                        onChange={(event) => setUserName(event.target.value)}
+                    />
 
                     <button type='submit'>
                         <img src={paperPlaneIcon} alt="Paper Plane" />
