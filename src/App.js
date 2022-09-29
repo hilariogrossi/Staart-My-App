@@ -9,7 +9,7 @@ import './styles/Feed.css';
 import userIcon from './images/user.svg';
 import paperPlaneIcon from './images/paper-plane.svg';
 
-import Feed from './components/feed.js'
+import Feed from './components/Feed.js'
 
 // Pascal Case: a segunda palavra do componente é em caixa alta.
 export default function App() {

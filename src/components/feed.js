@@ -3,7 +3,7 @@ import emptyFolderIcon from '../images/empty-folder.svg';
 import userIcon from '../images/user.svg';
 
 export default function Feed(props) {
-    if (props.posts.lenght === 0) {
+    if (props.posts.length === 0) {
         return (
             <div className='feed-status'>
                 <img src={emptyFolderIcon} alt='Empty Folder' />
